@@ -1,5 +1,3 @@
-## Put comments here that give an overall description of what your
-## functions do
 
 
 ## These functions cache the inverse of a matrix so that it does not have
@@ -14,9 +12,13 @@ makeCacheMatrix <- function(x = matrix()) {
 
     m <- NULL
     x <- matrix(1:4,2,2)
-
+    mset <- function(y) {
+        x <<- y
+        m <<- NULL
+    }
     
 }
+
 
 
 
@@ -26,4 +28,14 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+    m <- x$getmean()
+    if (!is.null(m)) {
+        return(m)    
+        
+    }
+    data <- x$get()    
+    m <- Solve(data)
+    
+    m
+    
 }
